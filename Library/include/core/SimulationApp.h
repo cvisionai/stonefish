@@ -87,7 +87,6 @@ namespace sf
         //! A static method returning the pointer to the currently running application.
         static SimulationApp* getApp();
         
-    protected:
         void Loop();
 
         virtual void Init();
@@ -99,6 +98,7 @@ namespace sf
         virtual void StartSimulation();
         virtual void ResumeSimulation();
         virtual void StopSimulation();
+    protected:
         
         Console* console;
         uint64_t startTime;
