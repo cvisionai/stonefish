@@ -149,3 +149,21 @@ else()
         DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/cmake/${CMAKE_PROJECT_NAME}
     )
 endif()
+
+# Build bindings
+if (BUILD_BINDINGS)
+    cmake_policy(SET CMP0078 NEW)
+    cmake_policy(SET CMP0086 NEW)
+    find_package(SWIG QUIET)
+    find_package(PythonLibs QUIET)
+    include(UseSWIG)
+    include_directories(${PYTHON_INCLUDE_PATH})
+    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/Library/include)
+    set_property(SOURCE stonefish.i PROPERTY CPLUSPLUS ON)
+    swig_add_library(stonefish_py
+        TYPE SHARED
+        LANGUAGE python
+        SOURCES stonefish.i
+    )
+    swig_link_libraries(stonefish_py ${PYTHON_LIBRARIES} Stonefish)
+endif()
