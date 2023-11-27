@@ -40,6 +40,37 @@ void ParsedSimulationManager::BuildScenario()
     //std::cout << "PARSING " << sf::GetDataPath() << std::endl;
     bool success = parser.Parse(sf::GetDataPath() + "default.scn");
     std::cout << "SUCCESS? " << success << std::endl;
-    if(!success)
-        cCritical("Scenario parser: Parsing failed!");
+    if(success)
+        cInfo("Scenario description parsed successfully.");
+    else
+    {
+        cError("Errors detected when parsing scenario description!");
+        auto log = parser.getLog();
+        for(size_t i=0; i<log.size(); ++i)
+        {
+            switch(log[i].type)
+            {
+                case sf::MessageType::INFO:
+                    cInfo(log[i].text.c_str());
+                    break;
+                
+                case sf::MessageType::ERROR:
+                    cError(log[i].text.c_str());
+                    break;
+
+                case sf::MessageType::WARNING:
+                    cWarning(log[i].text.c_str());
+                    break;
+
+                case sf::MessageType::CRITICAL:
+                    cCritical(log[i].text.c_str());
+                    break;
+            }
+        }
+    }
+}
+
+void ParsedSimulationManager::SimulationStepCompleted(sf::Scalar timeStep)
+{
+    cInfo("Simulation time: %1.3lf", getSimulationTime());
 }

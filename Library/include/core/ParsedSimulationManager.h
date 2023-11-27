@@ -34,6 +34,7 @@ public:
     ParsedSimulationManager(sf::Scalar stepsPerSecond);
     
     void BuildScenario();
+    void SimulationStepCompleted(sf::Scalar timeStep);
 };
 
 #endif
