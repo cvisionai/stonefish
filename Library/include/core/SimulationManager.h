@@ -120,7 +120,7 @@ namespace sf
         void RestartScenario();
         
         //! A method computing the next simulation step.
-        void AdvanceSimulation();
+        void AdvanceSimulation(bool sync=false);
         
         //! A method updating the drawing queue (thread safe)
         void UpdateDrawingQueue();

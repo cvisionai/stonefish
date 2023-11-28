@@ -1001,7 +1001,7 @@ bool SimulationManager::SolveICProblem()
     return true;
 }
 
-void SimulationManager::AdvanceSimulation()
+void SimulationManager::AdvanceSimulation(bool sync)
 {
     //Check if initial conditions solved
     if(!icProblemSolved)
@@ -1018,6 +1018,10 @@ void SimulationManager::AdvanceSimulation()
     }
 
     uint64_t timeInMicroseconds = getSimulationClock(); //Realtime factor included in clock
+    if (sync) {
+        // Do exactly one update if sync is enabled
+        timeInMicroseconds = currentTime + ssus;
+    }
     deltaTime = timeInMicroseconds - currentTime; 
     currentTime = timeInMicroseconds;
 
