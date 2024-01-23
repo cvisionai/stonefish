@@ -166,4 +166,8 @@ if (BUILD_BINDINGS)
         SOURCES stonefish.i
     )
     swig_link_libraries(stonefish_py ${PYTHON_LIBRARIES} Stonefish)
+    target_compile_definitions(stonefish_py PUBLIC 
+        BT_EULER_DEFAULT_ZYX 
+        BT_USE_DOUBLE_PRECISION
+    )
 endif()
