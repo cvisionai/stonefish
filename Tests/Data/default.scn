@@ -69,7 +69,7 @@
 		<material name="Aluminium"/>
 		<look name="gray"/>
 		<world_transform rpy="0.0 0.0 0.0" xyz="2.0 0.0 3.0"/>
-	</static-->
+	</static>
 
 	<animated name="Anim" type="model" collisions="false">
 		<physical>
@@ -88,7 +88,7 @@
 			<origin rpy="0.0 0.0 0.0" xyz="-0.54 -0.35 -0.74"/>
 			<noise ned_position="0.5"/>
 		</sensor>
-	</animated>
+	</animated-->
 
 	<!--dynamic name="Ball" type="sphere" physics="submerged">
 		<dimensions radius="0.5"/>
@@ -106,7 +106,7 @@
 
   <include file="girona500auv_console.scn">
 		<arg name="robot_name" value="GIRONA500"/>
-		<arg name="robot_position" value="0.0 0.0 200.0"/>
+		<arg name="robot_position" value="5.0 3.0 10.0"/>
 	</include>
 
 </scenario>
