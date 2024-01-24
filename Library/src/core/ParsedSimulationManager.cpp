@@ -72,5 +72,5 @@ void ParsedSimulationManager::BuildScenario()
 
 void ParsedSimulationManager::SimulationStepCompleted(sf::Scalar timeStep)
 {
-    cInfo("Simulation time: %1.3lf", getSimulationTime());
+    //cInfo("Simulation time: %1.3lf", getSimulationTime());
 }

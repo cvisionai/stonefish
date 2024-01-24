@@ -14,6 +14,7 @@
 #include "actuators/Actuator.h"
 #include "actuators/LinkActuator.h"
 #include "actuators/Thruster.h"
+#include "sensors/Sensor.h"
 using namespace sf;
 %}
 %typemap(in) btScalar {
@@ -90,3 +91,4 @@ using namespace sf;
 %include "actuators/Actuator.h"
 %include "actuators/LinkActuator.h"
 %include "actuators/Thruster.h"
+%include "sensors/Sensor.h"
