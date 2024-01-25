@@ -106,7 +106,7 @@
 
   <include file="girona500auv_console.scn">
 		<arg name="robot_name" value="GIRONA500"/>
-		<arg name="robot_position" value="0.0 0.0 0.0"/>
+		<arg name="robot_position" value="0.0 0.0 200.0"/>
 	</include>
 
 </scenario>
