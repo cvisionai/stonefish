@@ -156,7 +156,7 @@ namespace sf
         int getWindowHeight();
         
         //! A method informing if the simulation is in the loading stage.
-        bool isLoading();
+        //bool isLoading();
         
         //! A method returning the path to the shader directory.
         std::string getShaderPath();
