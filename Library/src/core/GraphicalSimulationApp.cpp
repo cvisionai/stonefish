@@ -1112,4 +1112,9 @@ int GraphicalSimulationApp::RunSimulation(void* data)
     return 0;
 }
 
+void GraphicalSimulationApp::Render()
+{
+    RenderLoop();
+}
+
 }
