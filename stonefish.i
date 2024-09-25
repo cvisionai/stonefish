@@ -77,7 +77,11 @@ using namespace sf;
   }
   $result = py_list;
 }
+
+%include "stdint.i"
 %include "std_string.i"
+%include "std_vector.i"
+%template(VectorU8) std::vector<uint8_t>;
 %include "btBulletDynamicsCommon.h"
 %include "StonefishCommon.h"
 %include "tinyxml2.h"
