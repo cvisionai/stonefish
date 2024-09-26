@@ -77,6 +77,37 @@ using namespace sf;
   }
   $result = py_list;
 }
+%typemap(in) btVector3 {
+    PyObject *obj = $input;
+    if (PySequence_Check(obj) && PySequence_Size(obj) == 3) {
+        PyObject *item0 = PySequence_GetItem(obj, 0);
+        PyObject *item1 = PySequence_GetItem(obj, 1);
+        PyObject *item2 = PySequence_GetItem(obj, 2);
+
+        if (item0 && item1 && item2) {
+            double x = PyFloat_AsDouble(item0);
+            double y = PyFloat_AsDouble(item1);
+            double z = PyFloat_AsDouble(item2);
+
+            Py_DECREF(item0);
+            Py_DECREF(item1);
+            Py_DECREF(item2);
+
+            if (PyErr_Occurred()) {
+                SWIG_fail;
+            }
+
+            $1 = btVector3(btScalar(x), btScalar(y), btScalar(z));
+        } else {
+            Py_XDECREF(item0);
+            Py_XDECREF(item1);
+            Py_XDECREF(item2);
+            SWIG_exception_fail(SWIG_TypeError, "Error extracting items from sequence");
+        }
+    } else {
+        SWIG_exception_fail(SWIG_TypeError, "Expected a sequence of length 3");
+    }
+}
 
 %include "stdint.i"
 %include "std_string.i"
